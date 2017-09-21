@@ -20,9 +20,10 @@ public abstract class BasicActivity extends RxActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        bind = ButterKnife.bind(this);
+        bind = ButterKnife.bind(getActivity());
         initViews();
         initData(savedInstanceState);
+        setEvent();
     }
 
     /**
