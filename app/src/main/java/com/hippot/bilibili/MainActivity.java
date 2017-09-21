@@ -1,13 +1,31 @@
 package com.hippot.bilibili;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.hippot.bilibili.base.BasicActivity;
+import com.hippot.bilibili.utils.BottomNavigationViewHelper;
+
+public class MainActivity extends BasicActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
+
+    @Override
+    protected void initViews() {
+        BottomNavigationViewHelper.disableShiftMode(findViewById(R.id.bottom_navigation));
+    }
+
+    @Override
+    protected void setEvent() {
+
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+
+    }
+
+
 }

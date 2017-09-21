@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:title="@string/home"
+        android:icon="@mipmap/ic_home_gray"/>
+
+    <item
+        android:id="@+id/partition"
+        android:icon="@mipmap/ic_recommend_gray"
+        android:title="@string/partition" />
+
+    <item
+        android:id="@+id/dynamic"
+        android:icon="@mipmap/ic_recommend_gray"
+        android:title="@string/dynamic"/>
+
+    <item
+        android:id="@+id/message"
+        android:icon="@mipmap/ic_message_gray"
+        android:title="@string/message"/>
+
+</menu>
