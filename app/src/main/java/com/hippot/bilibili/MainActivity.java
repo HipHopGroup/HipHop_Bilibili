@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 
 import com.hippot.bilibili.base.BasicActivity;
+import com.hippot.bilibili.function.fragment.HomeFragment;
 import com.hippot.bilibili.utils.BottomNavigationViewHelper;
 
 import butterknife.BindView;
@@ -31,7 +32,7 @@ public class MainActivity extends BasicActivity {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-
+        getSupportFragmentManager().beginTransaction().add(R.id.container , new HomeFragment()).commit();
     }
 
 

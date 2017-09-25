@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.trello.rxlifecycle.components.RxActivity;
+import com.trello.rxlifecycle.components.support.RxFragmentActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -13,7 +13,7 @@ import butterknife.Unbinder;
  * Created by teng on 17/9/21.
  */
 
-public abstract class BasicActivity extends RxActivity {
+public abstract class BasicActivity extends RxFragmentActivity {
     private Unbinder bind;
 
     @Override
