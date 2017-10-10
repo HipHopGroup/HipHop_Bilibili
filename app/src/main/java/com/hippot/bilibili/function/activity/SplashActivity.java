@@ -1,8 +1,9 @@
-package com.hippot.bilibili;
+package com.hippot.bilibili.function.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.hippot.bilibili.R;
 import com.hippot.bilibili.utils.SystemBarHelper;
 import com.trello.rxlifecycle.components.RxActivity;
 

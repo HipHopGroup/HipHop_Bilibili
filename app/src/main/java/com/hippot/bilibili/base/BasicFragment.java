@@ -94,16 +94,6 @@ public abstract class BasicFragment<T extends BasicPresenter> extends RxFragment
     }
 
     @Override
-    public void hasNoMoreDate() {
-
-    }
-
-    @Override
-    public void loadMoreFinish(Object dates) {
-
-    }
-
-    @Override
     public void showRefreshFinish(Object score) {
 
     }

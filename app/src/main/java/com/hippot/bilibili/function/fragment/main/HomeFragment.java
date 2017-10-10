@@ -1,4 +1,4 @@
-package com.hippot.bilibili.function.fragment;
+package com.hippot.bilibili.function.fragment.main;
 
 import com.hippot.bilibili.R;
 import com.hippot.bilibili.base.BasicFragment;

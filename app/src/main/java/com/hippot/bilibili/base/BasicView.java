@@ -10,9 +10,9 @@ public interface BasicView {
 
     void showEmptyView(String msg);
 
-    void hasNoMoreDate();
+//    void hasNoMoreDate();
 
-    void loadMoreFinish(Object dates);
+//    void loadMoreFinish(Object dates);
 
     void showRefreshFinish(Object score);
 
