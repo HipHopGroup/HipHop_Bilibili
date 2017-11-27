@@ -2,19 +2,16 @@ package com.hippot.bilibili.base;
 
 public interface BasicView {
 
-    void showLoading();
+    void showErrorMsg(String msg);
 
-    void refreshView();
+    void useNightMode(boolean isNight);
 
-    void showNetError();
+    //=======  State  =======
+    void stateError();
 
-    void showEmptyView(String msg);
+    void stateEmpty();
 
-//    void hasNoMoreDate();
+    void stateLoading();
 
-//    void loadMoreFinish(Object dates);
-
-    void showRefreshFinish(Object score);
-
-    void showToastError();
+    void stateMain();
 }

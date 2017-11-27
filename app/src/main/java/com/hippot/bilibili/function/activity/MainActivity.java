@@ -4,18 +4,17 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 
 import com.hippot.bilibili.R;
-import com.hippot.bilibili.base.BasicActivity;
+import com.hippot.bilibili.base.SimpleActivity;
 import com.hippot.bilibili.function.fragment.main.HomeFragment;
 import com.hippot.bilibili.utils.BottomNavigationViewHelper;
 
 import butterknife.BindView;
 
-public class MainActivity extends BasicActivity {
+public class MainActivity extends SimpleActivity {
 
     @BindView(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigationView;
     private HomeFragment mHomeFragment;
-
 
     @Override
     protected int getLayoutId() {
@@ -24,11 +23,31 @@ public class MainActivity extends BasicActivity {
 
     @Override
     protected void initViews() {
+        mHomeFragment = new HomeFragment();
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container , mHomeFragment)
+                .commit();
+
     }
 
     @Override
     protected void setEvent() {
+
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+
+    }
+
+//    @Override
+//    protected void initViews() {
+//
+//    }
+//
+//    @Override
+//    protected void setEvent() {
 //        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 //            @Override
 //            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -52,16 +71,12 @@ public class MainActivity extends BasicActivity {
 //                return false;
 //            }
 //        });
-    }
+//    }
 
-    @Override
-    protected void initData(Bundle savedInstanceState) {
-        mHomeFragment = new HomeFragment();
-
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container , mHomeFragment)
-                .commit();
-    }
-
+//    @Override
+//    protected void initData(Bundle savedInstanceState) {
+//
+//    }
+//
 
 }

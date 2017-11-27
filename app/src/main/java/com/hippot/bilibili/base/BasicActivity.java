@@ -4,45 +4,71 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.trello.rxlifecycle.components.support.RxFragmentActivity;
+import com.hippot.bilibili.BiliApplication;
+import com.hippot.bilibili.component.ActivityComponent;
+import com.hippot.bilibili.component.DaggerActivityComponent;
+import com.hippot.bilibili.utils.SnackBarUtil;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import javax.inject.Inject;
 
 /**
  * Created by teng on 17/9/21.
  */
+public abstract class BasicActivity<T extends BasicPresenter> extends SimpleActivity implements BasicView{
 
-public abstract class BasicActivity extends RxFragmentActivity {
-    private Unbinder bind;
+
+    @Inject
+    protected T mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        bind = ButterKnife.bind(getActivity());
-        initViews();
-        initData(savedInstanceState);
-        setEvent();
+        initInject();
+        if (mPresenter != null){
+            mPresenter.attachView(this);
+        }
     }
 
-    /**
-     * 设置布局
-     * @return
-     */
-    protected abstract int getLayoutId();
+    protected ActivityComponent getActivityComponent(){
+        return  DaggerActivityComponent.builder()
+                .appComponent(BiliApplication.getComponent())
+                .activityModule(getActivityModule())
+                .build();
+    }
 
-    protected abstract void initViews();
-
-    protected abstract void setEvent();
-
-    protected abstract void initData(Bundle savedInstanceState);
-
+    protected ActivityModule getActivityModule(){
+        return new ActivityModule(this);
+    }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        bind.unbind();
+    public void showErrorMsg(String msg) {
+        SnackBarUtil.show(findViewById(android.R.id.content), msg);
+    }
+
+    @Override
+    public void useNightMode(boolean isNight) {
+
+        recreate();
+    }
+
+    @Override
+    public void stateError() {
+
+    }
+
+    @Override
+    public void stateEmpty() {
+
+    }
+
+    @Override
+    public void stateLoading() {
+
+    }
+
+    @Override
+    public void stateMain() {
+
     }
 
     protected Activity getActivity(){
@@ -52,4 +78,6 @@ public abstract class BasicActivity extends RxFragmentActivity {
     protected Context getContext(){
         return this;
     }
+
+    protected abstract void initInject();
 }
