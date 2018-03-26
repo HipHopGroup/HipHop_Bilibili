@@ -2,66 +2,59 @@ package com.hippot.bilibili.base;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import com.hippot.bilibili.BiliApplication;
+import com.hippot.bilibili.component.DaggerFragmentComponent;
+import com.hippot.bilibili.component.FragmentComponent;
+import com.hippot.bilibili.module.FragmentModule;
+import com.hippot.bilibili.utils.SnackBarUtil;
+
+import javax.inject.Inject;
 
 /**
  * Created by teng on 17/9/22.
  */
 
-public abstract class BasicFragment<T extends BasicPresenter> extends Fragment implements BasicView{
+public abstract class BasicFragment<T extends BasicPresenter> extends SimpleFragment implements BasicView{
 
-    protected View rootView;
-    Unbinder binder;
+    @Inject
+    protected T mPresenter;
+
+    protected FragmentComponent getFragmentComponent(){
+        return DaggerFragmentComponent.builder()
+                .appComponent(BiliApplication.getComponent())
+                .fragmentModule(getFragmentModule())
+                .build();
+    }
+
+    protected FragmentModule getFragmentModule(){
+        return new FragmentModule(this);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(getLayoutId() , container , false);
-
-        return rootView;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        binder = ButterKnife.bind(this , rootView);
-        initViews();
-        setEvent();
-        initData();
+        initInject();
+        mPresenter.attachView(this);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onDestroyView() {
+        if (mPresenter != null) mPresenter.detachView();
         super.onDestroyView();
-        binder.unbind();
-    }
-
-    protected abstract int getLayoutId();
-
-    protected abstract void initViews();
-
-    protected abstract void setEvent();
-
-    protected abstract void initData();
-
-    protected void showNetWorkError(){
-
     }
 
     @Override
     public void showErrorMsg(String msg) {
-
+        SnackBarUtil.show(((ViewGroup) getActivity().findViewById(android.R.id.content)).getChildAt(0), msg);
     }
 
     @Override
@@ -88,6 +81,8 @@ public abstract class BasicFragment<T extends BasicPresenter> extends Fragment i
     public void stateMain() {
 
     }
+
+    protected abstract void initInject();
 
     protected Activity getSupportActivity(){
         return this.getSupportActivity();

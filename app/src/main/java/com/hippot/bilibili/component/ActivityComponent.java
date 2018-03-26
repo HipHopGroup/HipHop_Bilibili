@@ -2,7 +2,7 @@ package com.hippot.bilibili.component;
 
 import android.app.Activity;
 
-import com.hippot.bilibili.base.ActivityModule;
+import com.hippot.bilibili.module.ActivityModule;
 import com.hippot.bilibili.function.activity.MainActivity;
 import com.hippot.bilibili.scope.ActivityScope;
 

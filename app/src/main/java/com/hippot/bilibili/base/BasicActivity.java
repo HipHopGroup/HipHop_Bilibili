@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.hippot.bilibili.BiliApplication;
 import com.hippot.bilibili.component.ActivityComponent;
 import com.hippot.bilibili.component.DaggerActivityComponent;
+import com.hippot.bilibili.module.ActivityModule;
 import com.hippot.bilibili.utils.SnackBarUtil;
 
 import javax.inject.Inject;

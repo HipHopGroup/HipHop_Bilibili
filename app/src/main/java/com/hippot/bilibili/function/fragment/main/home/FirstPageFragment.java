@@ -1,13 +1,13 @@
 package com.hippot.bilibili.function.fragment.main.home;
 
 import com.hippot.bilibili.R;
-import com.hippot.bilibili.base.BasicListFragment;
+import com.hippot.bilibili.base.SimpleFragment;
 
 /**
  * Created by teng on 17/10/10.
  */
 
-public class FirstPageFragment extends BasicListFragment{
+public class FirstPageFragment extends SimpleFragment{
 
     @Override
     protected int getLayoutId() {

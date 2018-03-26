@@ -2,7 +2,7 @@ package com.hippot.bilibili;
 
 import android.app.Application;
 
-import com.hippot.bilibili.base.AppModule;
+import com.hippot.bilibili.module.AppModule;
 import com.hippot.bilibili.base.HttpModule;
 import com.hippot.bilibili.component.AppComponent;
 import com.hippot.bilibili.component.DaggerAppComponent;

@@ -2,7 +2,7 @@ package com.hippot.bilibili.component;
 
 
 import com.hippot.bilibili.BiliApplication;
-import com.hippot.bilibili.base.AppModule;
+import com.hippot.bilibili.module.AppModule;
 import com.hippot.bilibili.base.HttpModule;
 
 import javax.inject.Singleton;

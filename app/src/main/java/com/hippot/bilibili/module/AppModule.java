@@ -1,4 +1,4 @@
-package com.hippot.bilibili.base;
+package com.hippot.bilibili.module;
 
 
 import com.hippot.bilibili.BiliApplication;
